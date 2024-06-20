@@ -1,26 +1,26 @@
 // TODO: remove allow
 #[allow(dead_code)]
-mod encrypt;
+pub mod encrypt;
 
 // TODO: remove allow
 #[allow(dead_code)]
-mod decrypt;
+pub mod decrypt;
 
 // TODO: remove allow
 #[allow(dead_code)]
-mod parse;
+pub mod parse;
 
 // TODO: remove allow
 #[allow(dead_code)]
-pub(crate) mod envelope;
+pub mod envelope;
 
 // TODO: remove allow
 #[allow(unused_imports)]
-pub(crate) use encrypt::encrypt;
+pub use encrypt::encrypt;
 
 // TODO: remove allow
 #[allow(unused_imports)]
-pub(crate) use parse::{parse, ParsedJWE};
+pub use parse::{parse, ParsedJWE};
 
 // TODO: remove allow
 #[allow(unused_imports)]

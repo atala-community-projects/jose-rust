@@ -1,4 +1,4 @@
-mod jwe;
+pub mod jwe;
 mod jwk;
 mod jws;
 mod message;

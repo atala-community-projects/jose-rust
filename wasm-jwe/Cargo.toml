@@ -1,5 +1,5 @@
 [package]
-name = 'didcomm-js'
+name = 'jwe-rust'
 version = '0.4.1'
 authors = ['Vyacheslav Gudkov <vyacheslav.gudkov@dsr-corporation.com>']
 edition = '2018'

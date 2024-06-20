@@ -13,7 +13,7 @@ use crate::{
 };
 
 impl<'a, 'b> ParsedJWE<'a, 'b> {
-    pub(crate) fn decrypt<CE, KDF, KE, KW>(
+    pub fn decrypt<CE, KDF, KE, KW>(
         &self,
         sender: Option<(&str, &KE)>,
         recipient: (&str, &KE),

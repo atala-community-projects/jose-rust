@@ -7,23 +7,23 @@ use crate::{
 };
 
 #[derive(Debug, PartialEq, Eq)]
-pub(crate) struct ParsedJWE<'a, 'b> {
-    pub(crate) jwe: JWE<'a>,
-    pub(crate) protected: ProtectedHeader<'b>,
-    pub(crate) apu: Option<Vec<u8>>,
-    pub(crate) apv: Vec<u8>,
+pub struct ParsedJWE<'a, 'b> {
+    pub jwe: JWE<'a>,
+    pub protected: ProtectedHeader<'b>,
+    pub apu: Option<Vec<u8>>,
+    pub apv: Vec<u8>,
 }
 
-pub(crate) fn parse<'a, 'b>(jwe: &'a str, buf: &'b mut Vec<u8>) -> Result<ParsedJWE<'a, 'b>> {
+pub fn parse<'a, 'b>(jwe: &'a str, buf: &'b mut Vec<u8>) -> Result<ParsedJWE<'a, 'b>> {
     JWE::from_str(jwe)?.parse(buf)
 }
 
 impl<'a> JWE<'a> {
-    pub(crate) fn from_str(s: &str) -> Result<JWE> {
+    pub fn from_str(s: &str) -> Result<JWE> {
         serde_json::from_str(s).to_didcomm("Unable parse jwe")
     }
 
-    pub(crate) fn parse<'b>(self, buf: &'b mut Vec<u8>) -> Result<ParsedJWE<'a, 'b>> {
+    pub fn parse<'b>(self, buf: &'b mut Vec<u8>) -> Result<ParsedJWE<'a, 'b>> {
         base64::decode_config_buf(self.protected, base64::URL_SAFE_NO_PAD, buf)
             .kind(ErrorKind::Malformed, "Unable decode protected header")?;
 

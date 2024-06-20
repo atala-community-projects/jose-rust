@@ -16,7 +16,7 @@ use crate::{
     utils::crypto::{JoseKDF, KeyWrap},
 };
 
-pub(crate) fn encrypt<CE, KDF, KE, KW>(
+pub fn encrypt<CE, KDF, KE, KW>(
     plaintext: &[u8],
     alg: Algorithm,
     enc: EncAlgorithm,

@@ -6,7 +6,7 @@ use std::borrow::Cow;
 /// Subset of JWE in generic json serialization form used for authcrypt
 /// and anoncrypt message types.
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
-pub(crate) struct JWE<'a> {
+pub struct JWE<'a> {
     /// BASE64URL(UTF8(JWE Protected Header))
     /// Note: this field value is used as AAD for JWE Ciphertext
     pub protected: &'a str,
@@ -58,7 +58,7 @@ pub(crate) struct ProtectedHeader<'a> {
 }
 /// Recipient part of authcrypt/anoncrypt-specific JWE
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
-pub(crate) struct Recipient<'a> {
+pub struct Recipient<'a> {
     /// Per-recipient header
     /// Note it isn't serialized and not integrity protected
     pub header: PerRecipientHeader<'a>,
@@ -69,7 +69,7 @@ pub(crate) struct Recipient<'a> {
 
 /// Per-recipient header part of authcrypt/anoncrypt-specific JWE
 #[derive(Serialize, Deserialize, Debug, Clone, PartialEq, Eq)]
-pub(crate) struct PerRecipientHeader<'a> {
+pub struct PerRecipientHeader<'a> {
     /// Recipient KID as DID URL
     pub kid: &'a str,
 }
@@ -77,7 +77,7 @@ pub(crate) struct PerRecipientHeader<'a> {
 /// Represents possible values for `alg` header.
 /// Cryptographic algorithm used to encrypt or determine the value of the CEK.
 #[derive(Deserialize_enum_str, Serialize_enum_str, Debug, Clone, Eq, PartialEq)]
-pub(crate) enum Algorithm {
+pub enum Algorithm {
     #[serde(rename = "ECDH-1PU+A256KW")]
     Ecdh1puA256kw,
 
@@ -102,7 +102,7 @@ impl Algorithm {
 /// Identifies the content encryption algorithm used to perform authenticated encryption
 /// on the plaintext to produce the ciphertext and the Authentication Tag.
 #[derive(Deserialize_enum_str, Serialize_enum_str, Debug, Clone, Eq, PartialEq)]
-pub(crate) enum EncAlgorithm {
+pub enum EncAlgorithm {
     #[serde(rename = "A256CBC-HS512")]
     A256cbcHs512,
 
