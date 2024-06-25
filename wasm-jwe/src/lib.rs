@@ -1,5 +1,5 @@
 
-pub mod jwe;
+pub mod ecdh;
 
 
 // When the `wee_alloc` feature is enabled, use `wee_alloc` as the global
